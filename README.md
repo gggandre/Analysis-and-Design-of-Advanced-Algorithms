@@ -1,6 +1,6 @@
 # Analysis-and-Design-of-Advanced-Algorithms
 
-#A01753176 Gilberto André García Gaytán
+<b>A01753176 Gilberto André García Gaytán</b>
 Ejercicios de la materia de Analysis-and-Design-of-Advanced-Algorithms
 Profesor Ariel
 Grupo 601
