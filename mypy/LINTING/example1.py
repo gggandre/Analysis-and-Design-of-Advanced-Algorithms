@@ -1,16 +1,12 @@
-#code made in class with teacher ariel
-#A01753176 Gilberto André García Gaytán
+# code made in class with teacher ariel
+# A01753176 Gilberto André García Gaytán
 from typing import Any
-
-
 x: Any = 12
 x = 'hello'
-print (x)
-
+print(x)
 y: int = 12
 # y = 'hello'
-print (y)
-
+print(y)
 z: int | str = 42
-z ='hello'
+z = 'hello'
 print(z)
