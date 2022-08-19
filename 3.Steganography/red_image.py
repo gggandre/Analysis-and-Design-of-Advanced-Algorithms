@@ -1,0 +1,36 @@
+# ----------------------------------------------------------
+# Lab #1: Steganography
+# Image processing through bit manipulation.
+#
+# Date: 26-Aug-2022
+# Authors:
+#           A01745336 Diego Alejandro Balderas Tlahuitzo
+#           A01753176 Gilberto André García Gaytán
+# ----------------------------------------------------------
+from PIL import Image
+
+INPUT_FILE_NAME= 'scarlett.png'
+OUTPUT_FILE_NAME = 'out1.png'
+
+def process_image() -> None:
+    with Image.open(INPUT_FILE_NAME) as input_file:
+        pixin = input_file.load()    # type: ignore
+        width, height = input_file.size
+    
+    output_image = Image.new('RGB', (width, height))
+    pixout = output_image.load() # type: ignore
+    
+    for y in range(height):
+        for x in range(width):
+            r, _, _ = pixin[x, y]
+            pixout[x, y] = (r, 0, 0)
+            
+    output_image.save(OUTPUT_FILE_NAME)
+    
+    print(width, height)
+        
+
+if __name__ == '__main__':
+    process_image()
+
+    

@@ -1,2 +1,3 @@
 __pycache__/
+__.mypy_cache__/
 .DS_Store
