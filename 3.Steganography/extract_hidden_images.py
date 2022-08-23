@@ -39,11 +39,13 @@ def process_image(file_name: str) -> None:
             print("The mode of the file is not RGB.")
             sys.exit()
     else:
-        print("Error: The provided file name doesn't have a .png extension.")
+        print("The provided file name doesn’t have a .png extension.")
         sys.exit()
 
 
-if __name__ == '__main__':
-    INPUT_FILE_NAME = sys.argv[1]
-    process_image(INPUT_FILE_NAME)
-    
+try:
+    if __name__ == '__main__':
+        INPUT_FILE_NAME = sys.argv[1]
+        process_image(INPUT_FILE_NAME)
+except:
+    print("The name of the file was not provided as a command line argument.")
