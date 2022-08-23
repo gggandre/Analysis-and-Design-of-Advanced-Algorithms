@@ -1,12 +1,5 @@
-# ----------------------------------------------------------
-# Lab #1: Steganography
-# Image processing through bit manipulation.
-#
-# Date: 26-Aug-2022
-# Authors:
-#           A01745336 Diego Alejandro Balderas Tlahuitzo
-#           A01753176 Gilberto André García Gaytán
-# ----------------------------------------------------------
+# code made in class with teacher ariel
+# A01753176 Gilberto André García Gaytán
 from PIL import Image
 
 INPUT_FILE_NAME= 'scarlett.png'
