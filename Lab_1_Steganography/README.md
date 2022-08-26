@@ -36,3 +36,18 @@ Extracts from the red, green, and blue channels the corresponding hidden 1-bit i
 - file-name_channel_1_red.png
 - file-name_channel_2_green.png
 - file-name_channel_3_blue.png
+
+Example
+Assuming the above image (scarlett.png) is stored in the same directory as your script you should be able to type at the terminal the following command:
+
+`python extract_hidden_images.py scarlett.png`
+
+The following three files should be created in the same directory where the `scarlett.png` file is located:
+
+![image](https://user-images.githubusercontent.com/84719490/186956021-2faf5b7b-7cee-4d03-8174-205f531a3e16.png) `scarlett_channel_1_red.png`
+
+![image](https://user-images.githubusercontent.com/84719490/186956099-c76cd335-b4d7-4279-96b0-0410ea86405d.png) `scarlett_channel_2_green.png`
+
+![image](https://user-images.githubusercontent.com/84719490/186956157-7e191560-f66c-4139-8b9f-0a08bb3dfce4.png) `scarlett_channel_3_blue.png`
+
+
