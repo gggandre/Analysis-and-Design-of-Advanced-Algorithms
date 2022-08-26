@@ -23,7 +23,7 @@ This activity must be developed in the pre-assigned teams of two.
 
 We have the following processed PNG image file :
 
-![image](https://user-images.githubusercontent.com/84719490/186955407-e20889ef-a811-4f36-a2e5-68da74054772.png = 250x)
+![image](https://user-images.githubusercontent.com/84719490/186955407-e20889ef-a811-4f36-a2e5-68da74054772.png)
 
 There are three independent 1-bit images hidden in the least significant bit of every byte from each of the three color channels of the image.
 
