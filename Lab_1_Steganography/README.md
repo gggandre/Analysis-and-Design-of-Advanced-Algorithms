@@ -23,12 +23,12 @@ This activity must be developed in the pre-assigned teams of two.
 
 We have the following processed PNG image file :
 
-![image](https://user-images.githubusercontent.com/84719490/186957996-741144cf-d589-44b6-a36f-7c5645499a2c.png)
+![image](https://user-images.githubusercontent.com/84719490/186957996-741144cf-d589-44b6-a36f-7c5645499a2c.png | height=48px)
 
 
 There are three independent 1-bit images hidden in the least significant bit of every byte from each of the three color channels of the image.
 
-Write a Python script called extract_hidden_images.py that:
+Write a Python `script called extract_hidden_images.py` that:
 
 Takes as a command line argument the name of an RGB mode PNG file. The program should print an error message and quit under the following circumstances:
 The name of the file was not provided as a command line argument.
