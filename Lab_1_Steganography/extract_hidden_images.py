@@ -47,5 +47,5 @@ try:
     if __name__ == '__main__':
         INPUT_FILE_NAME = sys.argv[1]
         process_image(INPUT_FILE_NAME)
-except:
+except IndexError:
     print("The name of the file was not provided as a command line argument.")
