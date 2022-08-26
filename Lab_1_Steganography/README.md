@@ -1,6 +1,5 @@
 # Lab #1: Steganography
-# Code made with @A01745336
-
+# Code made with @https://github.com/A01745336
 
 ## <b>Objective</b>
 During this activity, students will be able to:
