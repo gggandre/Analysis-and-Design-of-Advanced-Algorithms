@@ -1,4 +1,6 @@
 # Lab #1: Steganography
+# Code made with @A01745336
+
 
 ## <b>Objective</b>
 During this activity, students will be able to:
@@ -21,7 +23,7 @@ This activity must be developed in the pre-assigned teams of two.
 
 We have the following processed PNG image file :
 
-![image](https://user-images.githubusercontent.com/84719490/186955407-e20889ef-a811-4f36-a2e5-68da74054772.png)
+![image](https://user-images.githubusercontent.com/84719490/186955407-e20889ef-a811-4f36-a2e5-68da74054772.png = 250x250)
 
 There are three independent 1-bit images hidden in the least significant bit of every byte from each of the three color channels of the image.
 
@@ -44,10 +46,10 @@ Assuming the above image (scarlett.png) is stored in the same directory as your 
 
 The following three files should be created in the same directory where the `scarlett.png` file is located:
 
-![image](https://user-images.githubusercontent.com/84719490/186956021-2faf5b7b-7cee-4d03-8174-205f531a3e16.png) `scarlett_channel_1_red.png`
+![image](https://user-images.githubusercontent.com/84719490/186956021-2faf5b7b-7cee-4d03-8174-205f531a3e16.png) <p align="center"> `scarlett_channel_1_red.png` </p>
 
-![image](https://user-images.githubusercontent.com/84719490/186956099-c76cd335-b4d7-4279-96b0-0410ea86405d.png) `scarlett_channel_2_green.png`
+![image](https://user-images.githubusercontent.com/84719490/186956099-c76cd335-b4d7-4279-96b0-0410ea86405d.png) <p align="center"> `scarlett_channel_2_green.png` </p>
 
-![image](https://user-images.githubusercontent.com/84719490/186956157-7e191560-f66c-4139-8b9f-0a08bb3dfce4.png) `scarlett_channel_3_blue.png`
+![image](https://user-images.githubusercontent.com/84719490/186956157-7e191560-f66c-4139-8b9f-0a08bb3dfce4.png) <p align="center">`scarlett_channel_3_blue.png` </p>
 
 
