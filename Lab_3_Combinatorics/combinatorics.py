@@ -52,6 +52,17 @@ def permutations(s: list[C], n: int) -> list[list[C]]:
 
 
 def permutations_with_repetition(s: list[C], n: int) -> list[list[C]]:
+    """
+    A function that returns a list of lists of all the possible
+    permutations
+    Args:
+        s (list[C]): Initial list
+        n (int): the length of each list
+    Returns:
+        list[list[C]]: List of lists with all the possible permutations with
+        repetition
+    """
+
     if n == 0:
         return []
     else:
@@ -65,6 +76,16 @@ def permutations_with_repetition(s: list[C], n: int) -> list[list[C]]:
 
 
 def combinations_with_repetition(s: list[C], n: int) -> list[list[C]]:
+    """
+    A function that returns a list of lists of all the possible
+    combinations
+    Args:
+        len_s (int): Length of the initial list
+        n (int): the length of each list
+    Returns:
+        list[list[int]]: List of lists with all the possible combinations of
+        numbers
+    """
 
     if n == 0:
         return []
@@ -74,13 +95,5 @@ def combinations_with_repetition(s: list[C], n: int) -> list[list[C]]:
 
 
 if __name__ == '__main__':
-
-    pprint(sorted_nicely(power_set([1, 2, 3, 4])))
-    print()
-    pprint(sorted_nicely(combinations(['a', 'b', 'c', 'd'], 2)))
-    print()
-    pprint(sorted_nicely(combinations([True, False], 1)))
-    print()
     pprint(permutations_with_repetition(['a', 'b', 'c'], 2))
     pprint(combinations_with_repetition(['a', 'b', 'c'], 2))
-    pprint(permute([1, 2, 3]))
