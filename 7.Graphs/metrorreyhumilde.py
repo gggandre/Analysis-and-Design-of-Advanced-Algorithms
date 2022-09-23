@@ -106,7 +106,7 @@ if __name__ == '__main__':
         path2: list[str] = node_to_path(bfs_result2)
         print("2. Talleres to Hospital Metropolitano:")
     print(path2)
-        
+
     bfs_result3: Optional[Node[str]] = bfs(
         "Alameda", lambda x: x == "Colonia Obrera", metrorrey.neighbors_for_vertex)
     if bfs_result3 is None:
