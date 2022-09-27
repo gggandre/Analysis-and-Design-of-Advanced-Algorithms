@@ -60,3 +60,11 @@ if __name__ == '__main__':
     # print(tuple(generator))
     print(list(depth_first_search('A', g)))
     print(list(breadth_first_search('A', g)))
+
+    x = 'C'
+    for i, y in enumerate(depth_first_search('A', g)):
+        if y == x:
+            print(i)
+            break
+    else:
+        print('Not found')
