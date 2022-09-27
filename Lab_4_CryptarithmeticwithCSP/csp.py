@@ -28,7 +28,7 @@ class Constraint(Generic[V, D], ABC):
 
     # Must be overridden by subclasses
     @abstractmethod
-    def satisfied(self, assignment: Dict[V, D]) -> bool:
+    def satisfy(self, assignment: Dict[V, D]) -> bool:
         ...
 
 
@@ -57,7 +57,7 @@ class CSP(Generic[V, D]):
     # for the given variable against it
     def consistent(self, variable: V, assignment: Dict[V, D]) -> bool:
         for constraint in self.constraints[variable]:
-            if not constraint.satisfied(assignment):
+            if not constraint.satisfy(assignment):
                 return False
         return True
 
