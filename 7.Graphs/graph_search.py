@@ -1,4 +1,3 @@
-from inspect import stack
 from typing import Generator
 from collections import deque
 

@@ -1,106 +1,116 @@
-# File: cryptarithmetic_puzzle_test.py
-
-from unittest import TestCase, main
-from cryptarithmetic_puzzle import solve_cryptarithmetic_puzzle
-
-
-class TestCryptarithmetic(TestCase):
-
-    def test_cryptarithmetic_puzzle_1(self):
-        self.assertEqual(
-            {'X': 1, 'Y': 2, 'Z': 8},
-            solve_cryptarithmetic_puzzle(['x', 'y', 'z'], 'xx'))
-
-    def test_cryptarithmetic_puzzle_2(self):
-        self.assertEqual(
-            {'A': 0, 'B': 1, 'C': 2, 'D': 4, 'E': 5,
-             'F': 7, 'G': 8, 'H': 9, 'I': 3, 'J': 6},
-            solve_cryptarithmetic_puzzle(['A', 'B', 'C', 'D',
-                                          'E', 'F', 'G', 'H'],
-                                         'IJ'))
-
-    def test_cryptarithmetic_puzzle_3(self):
-        self.assertEqual(
-            {'A': 1, 'B': 9, 'C': 8},
-            solve_cryptarithmetic_puzzle(['ab', 'bc', 'ca'], 'abc'))
-
-    def test_cryptarithmetic_puzzle_4(self):
-        self.assertEqual(
-            {'X': 1, 'Y': 9, 'Z': 8},
-            solve_cryptarithmetic_puzzle(['xx', 'yy', 'zz'], 'xyz'))
-
-    def test_cryptarithmetic_puzzle_5(self):
-        self.assertEqual(
-            {'X': 9, 'Y': 1, 'Z': 8},
-            solve_cryptarithmetic_puzzle(['xxxx', 'yyyy', 'zzzz'],
-                                         'yxxxz'))
-
-    def test_cryptarithmetic_puzzle_6(self):
-        self.assertEqual(
-            {'X': 1, 'Y': 9, 'Z': 8},
-            solve_cryptarithmetic_puzzle(['xxxx', 'yyyy', 'zzzz'],
-                                         'xyyyz'))
-
-    def test_cryptarithmetic_puzzle_7(self):
-        self.assertIsNone(
-            solve_cryptarithmetic_puzzle(['x', 'y', 'z'], 'xxx'))
-
-    def test_cryptarithmetic_puzzle_8(self):
-        self.assertIsNone(
-            solve_cryptarithmetic_puzzle(['x', 'y', 'z'], 'xyz'))
-
-    def test_cryptarithmetic_puzzle_9(self):
-        self.assertEqual(
-            {'E': 0, 'I': 2, 'L': 3, 'S': 6, 'U': 9, 'V': 5, 'Y': 4},
-            solve_cryptarithmetic_puzzle(['i', 'luv', 'u'], 'yes'))
-
-    def test_cryptarithmetic_puzzle_10(self):
-        self.assertEqual(
-            {'A': 7, 'E': 8, 'G': 9, 'P': 1},
-            solve_cryptarithmetic_puzzle(['egg', 'egg'], 'page'))
-
-    def test_cryptarithmetic_puzzle_11(self):
-        self.assertEqual(
-            {'A': 0, 'D': 4, 'H': 7, 'M': 3, 'R': 1, 'T': 5, 'Y': 9},
-            solve_cryptarithmetic_puzzle(['math', 'myth'], 'hard'))
-
-    def test_cryptarithmetic_puzzle_12(self):
-        self.assertEqual(
-            {'F': 1, 'I': 3, 'M': 4, 'N': 7, 'S': 0, 'U': 6, 'W': 2},
-            solve_cryptarithmetic_puzzle(['fun', 'sun'], 'swim'))
-
-    def test_cryptarithmetic_puzzle_13(self):
-        self.assertEqual(
-            {'D': 5, 'E': 1, 'N': 0, 'O': 6, 'V': 3},
-            solve_cryptarithmetic_puzzle(['odd', 'odd'], 'even'))
-
-    def test_cryptarithmetic_puzzle_14(self):
-        self.assertEqual(
-            {'F': 0, 'O': 2, 'R': 4, 'T': 1, 'U': 6, 'W': 3},
-            solve_cryptarithmetic_puzzle(['two', 'two'], 'four'))
-
-    def test_cryptarithmetic_puzzle_15(self):
-        self.assertEqual(
-            {'A': 0, 'F': 1, 'L': 3, 'W': 4, 'Y': 5},
-            solve_cryptarithmetic_puzzle(['fly', 'fly', 'fly'],
-                                         'away'))
-
-    def test_cryptarithmetic_puzzle_16(self):
-        self.assertEqual(
-            {'A': 1, 'E': 8, 'H': 2, 'L': 3, 'P': 0, 'T': 9},
-            solve_cryptarithmetic_puzzle(['EAT', 'THAT'], 'APPLE'))
-
-    def test_cryptarithmetic_puzzle_17(self):
-        self.assertEqual(
-            {'G': 8, 'O': 1, 'T': 2, 'U': 0},
-            solve_cryptarithmetic_puzzle(['to', 'go'], 'out'))
-
-    def test_cryptarithmetic_puzzle_18(self):
-        self.assertEqual(
-            {'D': 1, 'E': 5, 'M': 0, 'N': 3,
-             'O': 8, 'R': 2, 'S': 7, 'Y': 6},
-            solve_cryptarithmetic_puzzle(['SEND', 'MORE'], 'MONEY'))
+# ----------------------------------------------------------
+# Lab #4: Cryptarithmetic with CSP
+# General cryptarithmetic puzzle solver.
+#
+# Date: 27-Sep-2022
+# Authors:
+#           A01745336 Diego Alejandro Balderas Tlahuitzo
+#           A01753176 Gilberto André García Gaytán
+# ----------------------------------------------------------
+from typing import Optional
+from csp import Constraint, CSP
 
 
+# `CSPConstraint` is a subclass of `Constraint` that takes a list of letters,
+# a list of additions, and
+# a result
+class CSPConstraint(Constraint[str, int]):
+    def __init__(self,
+                 letters: list[str],
+                 additions: list[str],
+                 result: str) -> None:
+        super().__init__(letters)
+        self.variables: list[str] = letters
+        self.additions = additions
+        self.expected_result: str = result
+
+    def num(self, word: str, values: dict[str, int]):
+        """
+        It takes a word and a dictionary of letters and their values, and
+        returns the sum of the values
+        of the letters in the word
+        :param word: str = The word to be converted to a number
+        :type word: str
+        :param values: dict[str, int]
+        :type values: dict
+                    [str, int]
+        :return: the addition of the values of the letters in the word.
+        """
+        addition: int = 0
+        base: int = 1
+        for letter in reversed(word):
+            addition += values[letter] * base
+            base *= 10
+        return addition
+
+    def satisfy(self, assignment: dict[str, int]):
+        """
+        If the number of unique values in the assignment is less than the
+        number of variables, then the assignment is not complete, so return
+        True. Otherwise, if the number of variables in the
+        assignment is less than the number of variables in the problem, then
+        the assignment is not complete, so return True. Otherwise, if the sum
+        of the numbers represented by the words in the additions list is equal
+        to the number represented by the expected result, then the assignment
+        is complete and correct, so return True. Otherwise, the assignment is
+        complete and incorrect, so return False
+        :param assignment: dict[str, int]
+        :type assignment: dict[str, int]
+        :return: a boolean value.
+        """
+        if len(set(assignment.values())) < len(assignment):
+            return False
+
+        if len(assignment) < len(self.variables):
+            return True
+
+        addition: int = 0
+        for word in self.additions:
+            number: int = self.num(word,
+                                   assignment)
+            addition += number
+
+        return addition == self.num(self.expected_result,
+                                    assignment)
+
+
+def solve_cryptarithmetic_puzzle(
+        additions: list[str],
+        result: str) -> Optional[dict[str, int]]:
+
+    """
+        It takes a list of addition problems and a result, and returns a
+        dictionary mapping letters to
+        digits if there is a solution, or None if there is no solution
+        :param additions: list[str]
+        :type additions: list[str]
+        :param result: The result of the addition
+        :type result: str
+        :return: A dictionary of the letters and their corresponding values.
+        """
+    for n in range(len(additions)):
+        additions[n] = additions[n].upper()
+    result = result.upper()
+
+    var: set[str] = set()
+    for word in additions:
+        for letter in word:
+            var.add(letter)
+    for letter in result:
+        var.add(letter.upper())
+    letters: list[str] = list(var)
+    letters.sort()
+
+    domains: dict[str, list[int]] = {var: list(range(10))
+                                     for var in letters}
+
+    csp: CSP[str, int] = CSP(letters, domains)
+    csp.add_constraint(CSPConstraint(letters, additions, result))
+    solver: Optional[dict[str, int]] = csp.backtracking_search()
+    return solver
+
+
+# A conditional statement that checks if the file is being run as a script or
+# imported as a module.
 if __name__ == '__main__':
-    main()
+    print(solve_cryptarithmetic_puzzle(['i', 'luv', 'u'], 'yes'))
