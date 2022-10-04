@@ -1,19 +1,17 @@
 from heapq import heapify, heappop
-import queue
 from typing import NamedTuple, Optional
 
 
-WeightedGraph= dict[str, set[tuple[str, int]]]
-
+WeightedGraph = dict[str, set[tuple[str, int]]]
 
 
 g: WeightedGraph = {
     'A': {('B', 4), ('C', 5)},
-    'B': (('A, 4')),
-    'C': {('A, 5'), ('D, 6'), ('E, 7')},
-    'D': {('C, 6'), ('E, 2'), ('F, 1')},
-    'E': {('C, 7'), ('D, 2'), ('F, 3')},
-    'F': {('D, 1'), ('E, 3')}
+    'B': {('A', 4)},
+    'C': {('A', 5), ('D', 6), ('E', 7)},
+    'D': {('C', 6), ('E', 2), ('F', 1)},
+    'E': {('C', 7), ('D', 2), ('F', 3)},
+    'F': {('D', 1), ('E', 3)}
 }
 
 
@@ -27,7 +25,7 @@ class Edge(NamedTuple):
         if isinstance(other, Edge):
             return (self.weight == other.weight
                     and ((self.u == other.u and self.v == other.v)
-                        or (self.u == other.v and self.v == other.u)))
+                         or (self.u == other.v and self.v == other.u)))
         else:
             return False
 
@@ -43,9 +41,9 @@ def make_heap(graph: WeightedGraph) -> list[Edge]:
         for neighbor in neighbors:
             v, weight = neighbor
             result.add(Edge(weight, u, v))
-        queue: list[Edge] = list(result)
-        heapify(queue)
-        return queue
+    queue: list[Edge] = list(result)
+    heapify(queue)
+    return queue
 
 
 def add_edge(graph: WeightedGraph, edge: Edge) -> None:
@@ -60,20 +58,22 @@ def remove_edge(graph: WeightedGraph, edge: Edge) -> None:
     graph[v].remove((u, weight))
 
 
-def has_cycle(initial: str,
-              graph: WeightedGraph,
-              visited: Optional[set[str]] = None,
-              parent: Optional[str] = None ) -> bool:
+def has_cycle(
+        initial: str,
+        graph: WeightedGraph,
+        visited: Optional[set[str]] = None,
+        parent: Optional[str] = None) -> bool:
+
     if visited is None:
         visited = set()
     visited.add(initial)
+
     for vertex, _ in graph[initial]:
         if vertex in visited:
             if vertex != parent:
                 return True
-            else:
-                if has_cycle(vertex, graph, visited, initial):
-                    return True
+        elif has_cycle(vertex, graph, visited, initial):
+            return True
     return False
 
 
