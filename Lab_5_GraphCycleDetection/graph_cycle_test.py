@@ -1,21 +1,21 @@
 # File: graph_cycle_test.py
 
 from unittest import TestCase, main
-from graph_cycle import graph_cicle
+from graph_cycle import has_cycle
 
 
 class TestGraphCycle(TestCase):
 
     def test_has_cycle_1(self):
         self.assertIsNone(
-            graph_cicle('A', {
+            has_cycle('A', {
                 'A': ['B'],
                 'B': ['A']
             }))
 
     def test_has_cycle_2(self):
         self.assertIsNone(
-            graph_cicle('A', {
+            has_cycle('A', {
                 'A': ['B'],
                 'B': ['A', 'C'],
                 'C': ['B']
@@ -24,7 +24,7 @@ class TestGraphCycle(TestCase):
     def test_has_cycle_3(self):
         self.assertEqual(
             ['A', 'B', 'C', 'A'],
-            graph_cicle('A', {
+            has_cycle('A', {
                 'A': ['B', 'C'],
                 'B': ['A', 'C'],
                 'C': ['A', 'B']
@@ -32,7 +32,7 @@ class TestGraphCycle(TestCase):
 
     def test_has_cycle_4(self):
         self.assertIsNone(
-            graph_cicle('C', {
+            has_cycle('C', {
                 'A': ['B'],
                 'B': ['A', 'C'],
                 'C': ['B', 'D'],
@@ -42,7 +42,7 @@ class TestGraphCycle(TestCase):
     def test_has_cycle_5(self):
         self.assertEqual(
             ['B', 'A', 'C', 'B'],
-            graph_cicle('D', {
+            has_cycle('D', {
                 'A': ['B', 'C'],
                 'B': ['A', 'C', 'D'],
                 'C': ['A', 'B', 'E'],
@@ -53,7 +53,7 @@ class TestGraphCycle(TestCase):
     def test_has_cycle_6(self):
         self.assertEqual(
             ['B', 'C', 'E', 'D', 'B'],
-            graph_cicle('A', {
+            has_cycle('A', {
                 'A': ['B'],
                 'B': ['A', 'C', 'D'],
                 'C': ['B', 'E'],
@@ -64,7 +64,7 @@ class TestGraphCycle(TestCase):
     def test_has_cycle_7(self):
         self.assertEqual(
             ['D', 'C', 'E', 'D'],
-            graph_cicle('A', {
+            has_cycle('A', {
                 'A': ['B'],
                 'B': ['A', 'D'],
                 'C': ['D', 'E'],
@@ -74,7 +74,7 @@ class TestGraphCycle(TestCase):
 
     def test_has_cycle_8(self):
         self.assertIsNone(
-            graph_cicle('E', {
+            has_cycle('E', {
                 'A': ['B'],
                 'B': ['A', 'D'],
                 'C': ['D'],
@@ -85,7 +85,7 @@ class TestGraphCycle(TestCase):
     def test_has_cycle_9(self):
         self.assertEqual(
             ['B', 'A', 'C', 'D', 'B'],
-            graph_cicle('B', {
+            has_cycle('B', {
                 'A': ['B', 'C'],
                 'B': ['A', 'D'],
                 'C': ['A', 'D'],
@@ -96,7 +96,7 @@ class TestGraphCycle(TestCase):
     def test_has_cycle_10(self):
         self.assertEqual(
             ['A', 'B', 'C', 'A'],
-            graph_cicle('D', {
+            has_cycle('D', {
                 'A': ['B', 'C', 'D'],
                 'B': ['A', 'C', 'D'],
                 'C': ['A', 'B', 'D', 'E'],
@@ -107,7 +107,7 @@ class TestGraphCycle(TestCase):
     def test_has_cycle_11(self):
         self.assertEqual(
             ['A', 'B', 'D', 'A'],
-            graph_cicle('E', {
+            has_cycle('E', {
                 'A': ['B', 'C', 'D'],
                 'B': ['A', 'D'],
                 'C': ['A', 'D', 'E'],
@@ -118,7 +118,7 @@ class TestGraphCycle(TestCase):
     def test_has_cycle_12(self):
         self.assertEqual(
             ['E', 'C', 'A', 'B', 'D', 'E'],
-            graph_cicle('E', {
+            has_cycle('E', {
                 'A': ['B', 'C'],
                 'B': ['A', 'D'],
                 'C': ['A', 'E'],
@@ -129,7 +129,7 @@ class TestGraphCycle(TestCase):
     def test_has_cycle_13(self):
         self.assertEqual(
             ['D', 'E', 'F', 'D'],
-            graph_cicle('A', {
+            has_cycle('A', {
                 'A': ['B'],
                 'B': ['A', 'C'],
                 'C': ['B', 'D'],
@@ -141,7 +141,7 @@ class TestGraphCycle(TestCase):
     def test_has_cycle_14(self):
         self.assertEqual(
             ['D', 'C', 'E', 'D'],
-            graph_cicle('F', {
+            has_cycle('F', {
                 'A': ['B'],
                 'B': ['A', 'D'],
                 'C': ['D', 'E'],
@@ -153,7 +153,7 @@ class TestGraphCycle(TestCase):
     def test_has_cycle_15(self):
         self.assertEqual(
             ['E', 'C', 'I', 'H', 'G', 'F', 'D', 'E'],
-            graph_cicle('B', {
+            has_cycle('B', {
                 'A': ['D'],
                 'B': ['E'],
                 'C': ['E', 'I'],
@@ -168,7 +168,7 @@ class TestGraphCycle(TestCase):
     def test_has_cycle_16(self):
         self.assertEqual(
             ['C', 'I', 'H', 'C'],
-            graph_cicle('A', {
+            has_cycle('A', {
                 'A': ['D'],
                 'B': ['E'],
                 'C': ['E', 'I', 'H'],
@@ -182,7 +182,7 @@ class TestGraphCycle(TestCase):
 
     def test_has_cycle_17(self):
         self.assertIsNone(
-            graph_cicle('A', {
+            has_cycle('A', {
                 'A': ['D'],
                 'B': ['E'],
                 'C': ['E', 'I'],
@@ -197,7 +197,7 @@ class TestGraphCycle(TestCase):
     def test_has_cycle_18(self):
         self.assertEqual(
             ['A', 'B', 'C', 'A'],
-            graph_cicle('D', {
+            has_cycle('D', {
                 'A': ['B', 'C', 'D', 'E'],
                 'B': ['A', 'C', 'D', 'E'],
                 'C': ['A', 'B', 'D', 'E'],
@@ -208,7 +208,7 @@ class TestGraphCycle(TestCase):
     def test_has_cycle_19(self):
         self.assertEqual(
             ['A', 'C', 'E', 'A'],
-            graph_cicle('B', {
+            has_cycle('B', {
                 'A': ['B', 'C', 'D', 'E'],
                 'B': ['A'],
                 'C': ['A', 'E'],
@@ -219,7 +219,7 @@ class TestGraphCycle(TestCase):
     def test_has_cycle_20(self):
         self.assertEqual(
             ['F', 'E', 'D', 'C', 'I', 'H', 'G', 'F'],
-            graph_cicle('F', {
+            has_cycle('F', {
                 'A': ['B'],
                 'B': ['A', 'C'],
                 'C': ['B', 'D', 'I'],
