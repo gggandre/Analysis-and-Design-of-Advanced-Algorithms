@@ -7,7 +7,8 @@
 #           A01753176 Gilberto André García Gaytán
 # ----------------------------------------------------------
 
-# Importing the annotations from the future, the Iterator from the collections.abc, and the Generic,
+# Importing the annotations from the future, the Iterator from the
+# collections.abc, and the Generic,
 # Optional, and TypeVar from the typing.
 from __future__ import annotations
 
