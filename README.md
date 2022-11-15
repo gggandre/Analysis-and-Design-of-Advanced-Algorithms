@@ -1,6 +1,8 @@
 # Analysis-and-Design-of-Advanced-Algorithms
 
 ## <b>A01753176 Gilberto André García Gaytán</b>
+## <b>A01745336 Diego Alejandro Balderas Tlahuitzo</b>
+
 Exercises of the subject Analysis and Design of Advanced Algorithms
 ## Teacher Ariel Ortiz @[ariel-ortiz](https://github.com/ariel-ortiz)
 ## Group 601
