@@ -1,5 +1,5 @@
-#code made in class with teacher ariel
-#A01753176 Gilberto André García Gaytán
+# code made in class with teacher ariel
+# A01753176 Gilberto André García Gaytán
 from math import sqrt
 from turtle import fd, rt, done, circle, pencolor, pensize, speed
 
